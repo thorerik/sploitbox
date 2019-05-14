@@ -1,0 +1,18 @@
+{
+  "builders": [
+    {
+      "communicator": "ssh",
+      "type": "vagrant",
+      "provider": "virtualbox",
+      "source_path": "ubuntu/bionic64",
+      "add_force": "true"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "{{template_dir}}/../scripts/configuration.sh",
+      "execute_command": "sudo {{.Path}}"
+    }
+  ]
+}
