@@ -7,7 +7,7 @@ if (( UID != 0 )); then
 fi
 
 apt-get update
-apt-get upgrade
+apt-get upgrade -y
 
 apt-get install -y \
   git \
