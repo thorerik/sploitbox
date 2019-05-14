@@ -6,6 +6,12 @@ fi
 apt-get update
 
 # Set up personalization
-sudo -u ubuntu -i git clone https://github.com/thorerik/dotfiles
-sudo -u ubuntu -i /home/ubuntu/dotfiles/install.sh
+rm -rf /home/ubuntu/.zgen
+if [ -e /home/ubuntu/dotfiles ]; then
+  sudo -u ubuntu -i sh -c "cd /home/ubuntu/dotfiles && git pull"
+  sudo -u ubuntu -i /home/ubuntu/dotfiles/install.sh
+else
+  sudo -u ubuntu -i git clone https://github.com/thorerik/dotfiles
+  sudo -u ubuntu -i /home/ubuntu/dotfiles/install.sh
+fi
 chsh -s /usr/bin/zsh ubuntu
